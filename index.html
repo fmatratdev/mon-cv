@@ -1,569 +1,1407 @@
 <!DOCTYPE html>
-<html lang="fr">
-
+<html lang="fr" data-lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavien Matrat - Ingenieur Developpement Logiciel</title>
+    <meta name="description" content="Portfolio de Flavien Matrat, Ingenieur en developpement logiciel specialise en WLangage, C# et design d'interfaces.">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --bg-dark: #040b14;
+            --bg-section: #f5f8fd;
+            --text-dark: #050d18;
+            --text-light: #6f7180;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --success: #10b981;
+        }
 
-  <title>Flavien MATRAT - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
 
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(4, 11, 20, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .lang-toggle {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0a1628 100%);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--primary-light);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        .hero-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .typing-container {
+            display: inline-block;
+            border-right: 3px solid var(--primary);
+            animation: blink 0.7s step-end infinite;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Sections */
+        section { padding: 5rem 2rem; }
+        .section-alt { background: var(--bg-section); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 750px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .education-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover { transform: translateX(5px); }
+
+        .education-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .location {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .tech-tags span {
+            background: var(--bg-section);
+            color: var(--text-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Skills - Style Site4 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .skill-header h4 { font-size: 1rem; }
+
+        .skill-header span {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: var(--bg-section);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover { transform: translateX(10px); }
+
+        .timeline-date {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul { list-style: none; }
+
+        .timeline-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .timeline-content li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Portfolio Section */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--border);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+        }
+
+        .portfolio-grid {
+            width: 100%;
+        }
+
+        .portfolio-item {
+            width: calc(33.333% - 1rem);
+            margin-bottom: 1.5rem;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 16/10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 968px) {
+            .portfolio-item { width: calc(50% - 0.75rem); }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-item { width: 100%; }
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        /* Contain pour les captures d'écran PC (app/web) */
+        .portfolio-item[data-category="app"] img,
+        .portfolio-item[data-category="web"] img {
+            object-fit: contain;
+            background: var(--bg-section);
+        }
+
+        .portfolio-item:hover img { transform: scale(1.03); }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(4, 11, 20, 0.9) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+        .portfolio-overlay h3 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay .tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active { display: flex; }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+
+        .lightbox-caption {
+            color: var(--white);
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            border: none;
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover { background: var(--primary-light); }
+        .lightbox-prev { left: 1rem; }
+        .lightbox-next { right: 1rem; }
+
+        /* Contact */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #0077b5;
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-btn:hover {
+            background: #005885;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.3);
+        }
+
+        .linkedin-btn svg { width: 24px; height: 24px; }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p { opacity: 0.7; font-size: 0.9rem; }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.25rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--primary-light); transform: translateY(-3px); }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-content { grid-template-columns: 1fr; gap: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-stats { gap: 2rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-dark);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            section { padding: 3rem 1rem; }
+            .hero-stats { flex-direction: column; gap: 1rem; }
+        }
+    </style>
 </head>
-
 <body>
-
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
-
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Flavien Matrat</a></h1>
-        <div class="social-links mt-3 text-center">
-            <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>-->
-            <a href="https://www.linkedin.com/in/flavien-matrat-aa26b1a7/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-    </div>
-
-    <nav id="navbar" class="nav-menu navbar">
-        <ul>
-            <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Accueil</span></a></li>
-            <li><a href="#about" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Mon profil</span></a></li>
-            <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Expériences professionnelles</span></a></li>
-            <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-            <!-- <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Compétences</span></a></li>-->
-            <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-    </nav><!-- .nav-menu -->
-</div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Flavien Matrat</h1>
-      <p>Je suis <span class="typed" data-typed-items="Ingénieur en développement logiciel, Designer d'interface logiciel"></span></p>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Mon profil</h2>
-          <p>
-              Ingénieur en développement logiciel, je maitrise plusieurs langages de programmation - <strong>WLangage</strong> (WINDEV / WEBDEV / WINDEV Mobile) &amp; <strong>C#</strong>. <br />
-              Je suis actuellement en poste à temps plein sur Saint Gely du Fesc. J'ai également été en auto entreprise et réalisé quelques développements en freelance à côté de mon emploi.
-          </p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Mes études</h3>
-            <p class="fst-italic">
-              Titulaire du titre d'ingénieur en informatique, j'ai commencé mes études par un D.U.T. informatique avant de faire une école d'ingénieur. 
-            </p>
-            <div class="row">
-              <div class="col-lg-12">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>D.U.T. Informatique</strong> <span>Orsay (91) - Langages étudiés : C++ / JAVA / SQL / PLSQL / langages Web</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>École d’ingénieur Polytech Paris Sud</strong> <span>Orsay (91) - Langages étudiés : C++ / JAVA / SQL / PLSQL / C# / codage SIMD / langages Web</span></li>
-                </ul>
-              </div>
-            </div>
-            <p>
-             Ces études m'ont permis de me familiariser avec le développement informatique. Mon cursus en école d'ingénieur à été réalisé en apprentissage (50% école, 50% entreprise).
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Compétences</h2>
-          <p>Liste de mes compétences que ce soit en termes de développement ou de design d'UI.</p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6" data-aos="fade-up">
-
-            <div class="progress">
-              <span class="skill">WLangage (WINDEV - WEBDEV) <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">WLangage (WINDEV Mobile) <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">C# (Blazor, EF, MVVM, .NET, .NET MAUI, WinUI3) <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Langages WEB (HTML,CSS, JS) <i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">  
-
-            <div class="progress">
-              <span class="skill">Photoshop / Affinity Photo <i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Python <i class="val">40%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Figma <i class="val">30%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Expériences professionnelles</h2>
-          <p>Retrouvez ci dessous mes différentes expériences professionnelles ainsi que les projets réalisés.</p>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="resume-title">Poste en entreprise</h3>
-                <div class="resume-item">
-                    <h4>Ingénieur - Développement logicielt</h4>
-                    <h5>2021 - Maintenant</h5>
-                    <p><em>NCPI - Saint Gely du Fesc</em></p>
-                    <ul>
-                        <li>Création et maintien d'application WINDEV / WEBDEV / WINDEV Mobile</li>
-                        <li>Refonte graphique complète des logiciels existants</li>
-                        <li>Mise en place d'une gestion des licences en ligne</li>
-                        <li>Mise en place d'un multisite avec données hébergées sur un parc de serveur</li>
-                        <li>Maintien et évolution de logiciel en vue de passage de normes (NF525 / MEV / MEVWEB)</li>
-                        <li>Développement de DLL C# pour la gestion du MEV au Canada</li>
-                        <li>Création et maintien d'applications en C# ( MVVM, EntityFramework, DLL .NET, .NET MAUI, Blazor, WinUI3)</li>
-                    </ul>
-                </div>
-                <div class="resume-item">
-                    <h4>Ingénieur - Développement logiciel - Team UX</h4>
-                    <h5>2015 - 2021</h5>
-                    <p><em>PC SOFT Informatique - Montpellier</em></p>
-                    <ul>
-                        <li>Développement d'exemples graphiques produits , LST et TDF / Windev Tour</li>
-                        <li>Développement et maintien du site de recrutement</li>
-                        <li>Développement et maintien du site et de l'application de documentation</li>
-                        <li>Utilisation du moteur de recherche d'image pour le produit</li>
-                        <li>Développement et maintien des sites "Cloud"</li>
-                        <li>Développement et maintien de différents sites web et applications internes . (Recrutement, Messagerie, Gestion de versions, Robot de surveillance, ...)</li>
-                        <li>Réalisation de plusieurs moteurs de recherche (documentation du produit, site web) (moteur SOLR et LIRE)</li>
-                        <li>Développement et maintien des sites PCS Cloud & portail Drive</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-12" data-aos="fade-up">
-                <h3 class="resume-title">Apprentissage</h3>
-                <div class="resume-item pb-0">
-                    <h4>Apprenti ingénieur informatique</h4>
-                    <p><em>Apprentissage réalise à l'Assemblée Nationale dans le service informatique à Paris. J'ai obtenu à la fin de cette apprentissage de 3 ans mon diplome d'ingénieur en informatique.</em></p>
-                    <ul>
-                        <li>Développement de l’application SYCERON : Systèmes de Compte rendu optimisé numérique. Saisie des comptes-rendus des débats et publication au Journal Officiel.</li>
-                        <li>Développement du système de vote en temps réel au sein de l'hémicycle.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-      </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Retrouvez ci dessous les interfaces graphique que j'ai pu réaliser au cours des mes différentes expériences professionnelles.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">Tous</li>
-              <li data-filter=".filter-app">Application</li>
-              <li data-filter=".filter-web">Site web</li>
-              <li data-filter=".filter-card">Application mobile</li>
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">
+                <img src="assets/img/profile-img.jpg" alt="Logo">
+                <span>Flavien Matrat</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="#about" data-fr="Profil" data-en="About">Profil</a></li>
+                <li><a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a></li>
+                <li><a href="#experience" data-fr="Expériences" data-en="Experience">Expériences</a></li>
+                <li><a href="#portfolio" data-fr="Portfolio" data-en="Portfolio">Portfolio</a></li>
+                <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+                <li><button class="lang-toggle" id="langToggle">EN</button></li>
             </ul>
-          </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">&#9776;</button>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <img src="assets/img/profile-img.jpg" alt="Flavien Matrat" class="hero-avatar">
+            <div class="hero-badge" data-fr="À l'écoute d'opportunités" data-en="Open to opportunities">À l'écoute d'opportunités</div>
+            <h1>Flavien <span>Matrat</span></h1>
+            <div class="hero-subtitle">
+                <span class="typing-container" id="typingText"></span>
+            </div>
+            <p data-fr="Ingénieur logiciel Full Stack passionné, avec une touche créative pour les interfaces modernes - UI/UX."
+               data-en="Passionate Full Stack Software Engineer, with a creative touch for modern interfaces - UI/UX.">
+                Ingénieur logiciel Full Stack passionné, avec une touche créative pour les interfaces modernes - UI/UX.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-num">10+</div>
+                    <div class="stat-label" data-fr="Années exp." data-en="Years exp.">Années exp.</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">25+</div>
+                    <div class="stat-label" data-fr="Projets" data-en="Projects">Projets</div>
+                </div>
+            </div>
+            <a href="#contact" class="hero-cta" data-fr="Me contacter" data-en="Contact me">Me contacter</a>
         </div>
+    </section>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-             <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Site web backoffice PCS Cloud"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application windows de recherche d'image'"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Refonte graphique de l'application NC Retail"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Site de gestion d'infrastrucure informatique"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-3.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-3.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Exemple d'application de ventes de bien immobilier'"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Backoffice d'un site de vente"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-10.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-10.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Site web de gestion d'un parc de magasins multisite"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application mobile de suivis de ventes d'un magasin"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-9.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-9.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Exemple de backoffice pour un site de vente"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-11.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-11.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application mobile de prise de commande à table"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Connexion à une application de statistiques mobile"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-12.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-12.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application C# de gestion de serveurs"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-13.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-13.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application C# de gestion de serveurs"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-23.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-23.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application C# de gestions de versions / launcher"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-24.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-24.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application C# de gestions de versions / launcher"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-16.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-16.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application C# de gestions de versions / launcher"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-             <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-20.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-20.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application C# MAUI de gestion de caisse"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-21.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-21.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application C# MAUI de gestion de caisse"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-22.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-22.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application C# MAUI de gestion de caisse"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-17.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-17.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Site Blazor C# de gestion de tickets"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-18.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-18.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Site Blazor C# de gestion de tickets"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-19.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-19.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Site Blazor C# de gestion de tickets"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-25.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-25.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Site Blazor C# de gestion de tickets"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-26.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-26.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Site Blazor C# de gestion de tickets"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-15.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-15.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Site Blazor C# de gestion de serveurs"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="assets/img/portfolio/portfolio-14.png" class="img-fluid" alt="">
-                    <div class="portfolio-links">
-                        <a href="assets/img/portfolio/portfolio-14.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Application C# de gestion de serveurs"><i class="bx bx-zoom-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    <section id="about" class="section-alt">
         <div class="container">
-
-            <div class="section-title">
-                <h2>Contact</h2>
-                <p>Pour toute demande de contact, veuillez m'envoyer un message via LinkedIn. <a href="https://www.linkedin.com/in/flavien-matrat-aa26b1a7/" class="linkedin">Voir le profil de Flavien Matrat</a></p>
+            <div class="section-header animate-on-scroll">
+                <h2 data-fr="Mon Profil" data-en="About Me">Mon Profil</h2>
+                <p data-fr="Ingénieur logiciel Full Stack avec une expertise en C# et WLangage"
+                   data-en="Full Stack Software Engineer with expertise in C# and WLangage">
+                    Ingénieur logiciel Full Stack avec une expertise en C# et WLangage
+                </p>
             </div>
-            <!--
-    <div class="row" data-aos="fade-in">
-        <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="name">Your Name</label>
-                        <input type="text" name="name" class="form-control" id="name" required>
+            <div class="about-content">
+                <div class="about-text animate-on-scroll">
+                    <h3 data-fr="À propos" data-en="About">À propos</h3>
+                    <p data-fr="Ingénieur logiciel Full Stack, je maîtrise plusieurs langages de programmation - C# et WLangage (WINDEV / WEBDEV / WINDEV Mobile). Je suis actuellement en poste à temps plein sur Saint-Gély-du-Fesc."
+                       data-en="As a software development engineer, I master several programming languages - C# and WLangage (WINDEV / WEBDEV / WINDEV Mobile). I am currently working full-time in Saint-Gély-du-Fesc.">
+                        Ingénieur logiciel Full Stack, je maîtrise plusieurs langages de programmation - C# et WLangage (WINDEV / WEBDEV / WINDEV Mobile). Je suis actuellement en poste à temps plein sur Saint-Gély-du-Fesc.
+                    </p>
+                    <p data-fr="J'ai également été en auto-entreprise et réalisé quelques développements en freelance à côté de mon emploi."
+                       data-en="I have also been self-employed and completed some freelance development work alongside my job.">
+                        J'ai également été en auto-entreprise et réalisé quelques développements en freelance à côté de mon emploi.
+                    </p>
+                    <p data-fr="Convaincu par le potentiel de l'IA, j'intègre des outils comme Claude, Copilot et Gemini dans mon workflow quotidien."
+                       data-en="Convinced by AI's potential, I integrate tools like Claude, Copilot, and Gemini into my daily workflow.">
+                        Convaincu par le potentiel de l'IA, j'intègre des outils comme Claude, Copilot et Gemini dans mon workflow quotidien.
+                    </p>
+                    <h3 data-fr="Mes études" data-en="My Education">Mes études</h3>
+                    <p data-fr="Titulaire du titre d'ingénieur en informatique, j'ai commencé mes études par un D.U.T. informatique avant de faire une école d'ingénieur. Mon cursus en école d'ingénieur a été réalisé en apprentissage (50% école, 50% entreprise)."
+                       data-en="Holder of a computer engineering degree, I started my studies with a D.U.T. in computer science before attending an engineering school. My engineering school curriculum was completed through an apprenticeship program (50% school, 50% company).">
+                        Titulaire du titre d'ingénieur en informatique, j'ai commencé mes études par un D.U.T. informatique avant de faire une école d'ingénieur. Mon cursus en école d'ingénieur a été réalisé en apprentissage (50% école, 50% entreprise).
+                    </p>
+                </div>
+                <div class="about-education animate-on-scroll">
+                    <div class="education-card">
+                        <h4>D.U.T. Informatique</h4>
+                        <div class="location">Orsay (91)</div>
+                        <div class="tech-tags">
+                            <span>C++</span><span>Java</span><span>SQL</span><span>PL/SQL</span><span>Web</span>
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="name">Your Email</label>
-                        <input type="email" class="form-control" name="email" id="email" required>
+                    <div class="education-card">
+                        <h4>École d'ingénieur Polytech Paris-Sud</h4>
+                        <div class="location">Orsay (91)</div>
+                        <div class="tech-tags">
+                            <span>C++</span><span>Java</span><span>C#</span><span>SIMD</span><span>SQL</span><span>Web</span>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="name">Subject</label>
-                    <input type="text" class="form-control" name="subject" id="subject" required>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 data-fr="Compétences" data-en="Skills">Compétences</h2>
+                <p data-fr="Liste de mes compétences en développement et design d'interface utilisateur"
+                   data-en="List of my skills in development and UI design">
+                    Liste de mes compétences en développement et design d'interface utilisateur
+                </p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-header"><h4>WLangage (WINDEV - WEBDEV)</h4><span>100%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
                 </div>
-                <div class="form-group">
-                    <label for="name">Message</label>
-                    <textarea class="form-control" name="message" rows="10" required></textarea>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-header"><h4>C# (Blazor, EF, .NET, MAUI, WinUI3)</h4><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
                 </div>
-                <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-header"><h4>WLangage (WINDEV Mobile)</h4><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
                 </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-header"><h4>DevOps (Docker, Kubernetes, Sysadmin)</h4><span>60%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="60"></div></div>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-header"><h4>Web (HTML, CSS, JavaScript)</h4><span>55%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="55"></div></div>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-header"><h4>Photoshop / Affinity Photo</h4><span>55%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="55"></div></div>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-header"><h4>Python</h4><span>40%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="40"></div></div>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-header"><h4>Figma</h4><span>30%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="30"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section-alt">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 data-fr="Expériences Professionnelles" data-en="Professional Experience">Expériences Professionnelles</h2>
+                <p data-fr="Mon parcours professionnel et les projets réalisés"
+                   data-en="My professional journey and completed projects">
+                    Mon parcours professionnel et les projets réalisés
+                </p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 - <span data-fr="Présent" data-en="Present">Présent</span></span>
+                        <h3 data-fr="Ingénieur logiciel Full Stack" data-en="Full Stack Software Engineer">Ingénieur logiciel Full Stack</h3>
+                        <h4>NCPI - Saint-Gély-du-Fesc</h4>
+                        <ul>
+                            <li data-fr="Développement et maintenance d'applications WINDEV / WEBDEV / WINDEV Mobile" data-en="Development and maintenance of WINDEV / WEBDEV / WINDEV Mobile applications">Développement et maintenance d'applications WINDEV / WEBDEV / WINDEV Mobile</li>
+                            <li data-fr="Développement et maintenance d’applications en C# (Entity Framework, DLL .NET, Blazor, WinUI3, MAUI)" data-en="Development and maintenance of C# applications (Entity Framework, .NET DLLs, Blazor, WinUI3, MAUI).">Développement et maintenance d’applications en C# (Entity Framework, DLL .NET, Blazor, WinUI3, MAUI)</li>
+                            <li data-fr="Mise en place d’une architecture multisite avec données hébergées sur un parc de serveurs (plus de 30 serveurs & Docker pour les bases de données)." data-en="Setup of a multisite architecture with data hosted on a server farm (30+ servers & Docker for databases).">Mise en place d’une architecture multisite avec données hébergées sur un parc de serveurs (plus de 30 serveurs & Docker pour les bases de données).</li>
+                            <li data-fr="Refonte graphique complète des logiciels existants" data-en="Complete graphical redesign of existing software">Refonte graphique complète des logiciels existants</li>
+                            <li data-fr="Mise en place d'une gestion des licences en ligne" data-en="Implementation of online license management">Mise en place d'une gestion des licences en ligne</li>
+                            <li data-fr="Développement de DLL C# pour la gestion du MEV au Canada" data-en="Development of C# DLL for MEV management in Canada">Développement de DLL C# pour la gestion du MEV au Canada</li>
+                            <li data-fr="Maintien et évolution de logiciels pour la conformité aux normes françaises et canadiennes (NF525, MEV, MEVWEB)" data-en="Software maintenance and evolution to comply with French and Canadian standards (NF525, MEV, MEVWEB)">Maintien et évolution de logiciels pour la conformité aux normes françaises et canadiennes (NF525, MEV, MEVWEB)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2015 - 2021</span>
+                        <h3 data-fr="Ingénieur logiciel Full Stack- Team UX" data-en="Full Stack Software Engineer - UX Team">Ingénieur logiciel Full Stack - Team UX</h3>
+                        <h4>PC SOFT Informatique - Montpellier</h4>
+                        <ul>
+                            <li data-fr="Développement d'exemples graphiques produits, LST et TDF / Windev Tour" data-en="Development of product graphic examples, LST and TDF / Windev Tour">Développement d'exemples graphiques produits, LST et TDF / Windev Tour</li>
+                            <li data-fr="Développement et maintien du site de documentation et des applications liées" data-en="Development and maintenance of the documentation website and related applications">Développement et maintien du site de documentation et des applications liées</li>
+                            <li data-fr="Développement des sites Cloud et portail Drive" data-en="Development of Cloud sites and Drive portal">Développement des sites Cloud et portail Drive</li>
+                            <li data-fr="Développement et maintenance de diverses applications internes" data-en="Development and maintenance of various internal applications">Développement et maintenance de diverses applications internes</li>
+                            <li data-fr="Réalisation de moteurs de recherche (SOLR et LIRE)" data-en="Development of search engines (SOLR and LIRE)">Réalisation de moteurs de recherche (SOLR et LIRE)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2012 - 2015</span>
+                        <h3 data-fr="Apprenti ingénieur informatique" data-en="Computer Engineering Apprentice">Apprenti ingénieur informatique</h3>
+                        <h4 data-fr="Assemblée Nationale - Paris" data-en="French National Assembly - Paris">Assemblée Nationale - Paris</h4>
+                        <ul>
+                            <li data-fr="Développement de l'application SYCERON : Système de compte-rendu optimisé numérique" data-en="Development of SYCERON application: Optimized digital reporting system">Développement de l'application SYCERON : Système de compte-rendu optimisé numérique</li>
+                            <li data-fr="Développement du système de vote en temps réel au sein de l'hémicycle" data-en="Development of real-time voting system within the hemicycle">Développement du système de vote en temps réel au sein de l'hémicycle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Portfolio</h2>
+                <p data-fr="Interfaces graphiques réalisées au cours de mes différentes expériences professionnelles"
+                   data-en="User interfaces created during my various professional experiences">
+                    Interfaces graphiques réalisées au cours de mes différentes expériences professionnelles
+                </p>
+            </div>
+            <div class="portfolio-filters animate-on-scroll">
+                <button class="filter-btn active" data-filter="all" data-fr="Tous" data-en="All">Tous</button>
+                <button class="filter-btn" data-filter="app" data-fr="Application" data-en="Application">Application</button>
+                <button class="filter-btn" data-filter="web" data-fr="Site web" data-en="Website">Site web</button>
+                <button class="filter-btn" data-filter="mobile" data-fr="Mobile" data-en="Mobile">Mobile</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Site web backoffice PCS Cloud" data-title-en="PCS Cloud Backoffice Website">
+                    <img src="assets/img/portfolio/portfolio-5.jpg" alt="PCS Cloud" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Site web backoffice PCS Cloud" data-en="PCS Cloud Backoffice Website">Site web backoffice PCS Cloud</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="app" data-title-fr="Application de recherche d'image" data-title-en="Image Search Application">
+                    <img src="assets/img/portfolio/portfolio-6.jpg" alt="Recherche image" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application de recherche d'image" data-en="Image Search Application">Application de recherche d'image</h3>
+                        <span class="tag">Application</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="app" data-title-fr="Refonte graphique NC Retail" data-title-en="NC Retail Graphical Redesign">
+                    <img src="assets/img/portfolio/portfolio-1.jpg" alt="NC Retail" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Refonte graphique NC Retail" data-en="NC Retail Graphical Redesign">Refonte graphique NC Retail</h3>
+                        <span class="tag">Application</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Site de gestion d'infrastructure informatique" data-title-en="IT Infrastructure Management Website">
+                    <img src="assets/img/portfolio/portfolio-2.jpg" alt="Infrastructure IT" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Gestion d'infrastructure informatique" data-en="IT Infrastructure Management">Gestion d'infrastructure informatique</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="app" data-title-fr="Application de ventes immobilières" data-title-en="Real Estate Sales Application">
+                    <img src="assets/img/portfolio/portfolio-3.png" alt="Immobilier" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application de ventes immobilières" data-en="Real Estate Sales Application">Application de ventes immobilières</h3>
+                        <span class="tag">Application</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Backoffice site de vente" data-title-en="Sales Site Backoffice">
+                    <img src="assets/img/portfolio/portfolio-4.jpg" alt="Backoffice vente" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Backoffice site de vente" data-en="Sales Site Backoffice">Backoffice site de vente</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Gestion parc magasins multisite" data-title-en="Multi-site Store Management">
+                    <img src="assets/img/portfolio/portfolio-10.png" alt="Multisite" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Gestion parc magasins multisite" data-en="Multi-site Store Management">Gestion parc magasins multisite</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="mobile" data-title-fr="Application mobile suivi de ventes" data-title-en="Sales Tracking Mobile App">
+                    <img src="assets/img/portfolio/portfolio-8.jpg" alt="Suivi ventes" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application mobile suivi de ventes" data-en="Sales Tracking Mobile App">Application mobile suivi de ventes</h3>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Backoffice site de vente" data-title-en="Sales Site Backoffice">
+                    <img src="assets/img/portfolio/portfolio-9.png" alt="Backoffice" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Backoffice site de vente" data-en="Sales Site Backoffice">Backoffice site de vente</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="mobile" data-title-fr="Prise de commande à table" data-title-en="Table Order Taking">
+                    <img src="assets/img/portfolio/portfolio-11.jpg" alt="Commande table" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Prise de commande à table" data-en="Table Order Taking">Prise de commande à table</h3>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="mobile" data-title-fr="Application statistiques mobile" data-title-en="Mobile Statistics App">
+                    <img src="assets/img/portfolio/portfolio-7.jpg" alt="Stats mobile" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application statistiques mobile" data-en="Mobile Statistics App">Application statistiques mobile</h3>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="app" data-title-fr="Application C# gestion de serveurs" data-title-en="C# Server Management App">
+                    <img src="assets/img/portfolio/portfolio-12.png" alt="Serveurs C#" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application C# gestion de serveurs" data-en="C# Server Management App">Application C# gestion de serveurs</h3>
+                        <span class="tag">Application</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="app" data-title-fr="Application C# gestion de serveurs" data-title-en="C# Server Management App">
+                    <img src="assets/img/portfolio/portfolio-13.png" alt="Serveurs C#" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application C# gestion de serveurs" data-en="C# Server Management App">Application C# gestion de serveurs</h3>
+                        <span class="tag">Application</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="app" data-title-fr="Application C# gestion de serveurs" data-title-en="C# Server Management App">
+                    <img src="assets/img/portfolio/portfolio-14.png" alt="Serveurs C#" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application C# gestion de serveurs" data-en="C# Server Management App">Application C# gestion de serveurs</h3>
+                        <span class="tag">Application</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="app" data-title-fr="Application C# launcher / versions" data-title-en="C# Launcher / Version Manager">
+                    <img src="assets/img/portfolio/portfolio-16.png" alt="Launcher" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application C# launcher / versions" data-en="C# Launcher / Version Manager">Application C# launcher / versions</h3>
+                        <span class="tag">Application</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="app" data-title-fr="Application C# launcher / versions" data-title-en="C# Launcher / Version Manager">
+                    <img src="assets/img/portfolio/portfolio-23.png" alt="Launcher" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application C# launcher / versions" data-en="C# Launcher / Version Manager">Application C# launcher / versions</h3>
+                        <span class="tag">Application</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="app" data-title-fr="Application C# launcher / versions" data-title-en="C# Launcher / Version Manager">
+                    <img src="assets/img/portfolio/portfolio-24.png" alt="Launcher" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application C# launcher / versions" data-en="C# Launcher / Version Manager">Application C# launcher / versions</h3>
+                        <span class="tag">Application</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="mobile" data-title-fr="Application C# MAUI caisse" data-title-en="C# MAUI Cash Register">
+                    <img src="assets/img/portfolio/portfolio-20.png" alt="MAUI Caisse" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application C# MAUI caisse" data-en="C# MAUI Cash Register">Application C# MAUI caisse</h3>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="mobile" data-title-fr="Application C# MAUI caisse" data-title-en="C# MAUI Cash Register">
+                    <img src="assets/img/portfolio/portfolio-21.png" alt="MAUI Caisse" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application C# MAUI caisse" data-en="C# MAUI Cash Register">Application C# MAUI caisse</h3>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="mobile" data-title-fr="Application C# MAUI caisse" data-title-en="C# MAUI Cash Register">
+                    <img src="assets/img/portfolio/portfolio-22.png" alt="MAUI Caisse" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Application C# MAUI caisse" data-en="C# MAUI Cash Register">Application C# MAUI caisse</h3>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Site Blazor gestion de tickets" data-title-en="Blazor Ticket Management Site">
+                    <img src="assets/img/portfolio/portfolio-17.png" alt="Blazor Tickets" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Site Blazor gestion de tickets" data-en="Blazor Ticket Management Site">Site Blazor gestion de tickets</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Site Blazor gestion de tickets" data-title-en="Blazor Ticket Management Site">
+                    <img src="assets/img/portfolio/portfolio-18.png" alt="Blazor Tickets" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Site Blazor gestion de tickets" data-en="Blazor Ticket Management Site">Site Blazor gestion de tickets</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Site Blazor gestion de tickets" data-title-en="Blazor Ticket Management Site">
+                    <img src="assets/img/portfolio/portfolio-19.png" alt="Blazor Tickets" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Site Blazor gestion de tickets" data-en="Blazor Ticket Management Site">Site Blazor gestion de tickets</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Site Blazor gestion de tickets" data-title-en="Blazor Ticket Management Site">
+                    <img src="assets/img/portfolio/portfolio-25.png" alt="Blazor Tickets" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Site Blazor gestion de tickets" data-en="Blazor Ticket Management Site">Site Blazor gestion de tickets</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Site Blazor gestion de tickets" data-title-en="Blazor Ticket Management Site">
+                    <img src="assets/img/portfolio/portfolio-26.png" alt="Blazor Tickets" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Site Blazor gestion de tickets" data-en="Blazor Ticket Management Site">Site Blazor gestion de tickets</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll" data-category="web" data-title-fr="Site Blazor gestion de serveurs" data-title-en="Blazor Server Management Site">
+                    <img src="assets/img/portfolio/portfolio-15.png" alt="Blazor Serveurs" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3 data-fr="Site Blazor gestion de serveurs" data-en="Blazor Server Management Site">Site Blazor gestion de serveurs</h3>
+                        <span class="tag" data-fr="Site web" data-en="Website">Site web</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-alt">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Contact</h2>
+                <p data-fr="N'hésitez pas à me contacter via LinkedIn"
+                   data-en="Feel free to contact me via LinkedIn">
+                    N'hésitez pas à me contacter via LinkedIn
+                </p>
+            </div>
+            <div class="contact-content animate-on-scroll">
+                <p data-fr="Pour toute demande de contact ou opportunité professionnelle, vous pouvez me joindre directement sur LinkedIn."
+                   data-en="For any contact request or professional opportunity, you can reach me directly on LinkedIn.">
+                    Pour toute demande de contact ou opportunité professionnelle, vous pouvez me joindre directement sur LinkedIn.
+                </p>
+                <a href="https://www.linkedin.com/in/flavien-matrat-aa26b1a7/" target="_blank" rel="noopener" class="linkedin-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    <span data-fr="Voir mon profil LinkedIn" data-en="View my LinkedIn profile">Voir mon profil LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p id="copyright"></p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">^</button>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">x</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&lt;</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">&gt;</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
         </div>
     </div>
-    -->
-        </div>
-    </section><!-- End Contact Section -->
 
-  </main><!-- End #main -->
+    <script>
+        // Copyright dynamique
+        document.getElementById('copyright').textContent = '\u00A9 ' + new Date().getFullYear() + ' Flavien Matrat - Tous droits réservés';
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Flavien MATRAT</span></strong>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-        Designed with <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
+        // Language Toggle
+        const langToggle = document.getElementById('langToggle');
+        let currentLang = 'fr';
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        const typingTexts = {
+            fr: ['Ingénieur en développement logiciel', 'Designer d\'interface logiciel'],
+            en: ['Software Development Engineer', 'Software Interface Designer']
+        };
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            langToggle.textContent = currentLang === 'fr' ? 'EN' : 'FR';
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+            document.querySelectorAll('[data-fr][data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + currentLang);
+            });
 
+            // Update copyright
+            const copyrightText = currentLang === 'fr' ? 'Tous droits réservés' : 'All rights reserved';
+            document.getElementById('copyright').textContent = '\u00A9 ' + new Date().getFullYear() + ' Flavien Matrat - ' + copyrightText;
+
+            startTypingAnimation();
+        });
+
+        // Typing Animation
+        const typingElement = document.getElementById('typingText');
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeText() {
+            const texts = typingTexts[currentLang];
+            const currentText = texts[textIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                typingSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typingSpeed = 500;
+            }
+
+            setTimeout(typeText, typingSpeed);
+        }
+
+        function startTypingAnimation() {
+            textIndex = 0;
+            charIndex = 0;
+            isDeleting = false;
+        }
+
+        setTimeout(typeText, 1000);
+
+        // Mobile Menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const skillBar = entry.target.querySelector('.skill-progress');
+                    if (skillBar) {
+                        setTimeout(() => {
+                            skillBar.style.width = skillBar.getAttribute('data-width') + '%';
+                        }, 200);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Portfolio Filter avec Isotope
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioGrid = document.querySelector('.portfolio-grid');
+
+        // Initialiser Isotope
+        const iso = new Isotope(portfolioGrid, {
+            itemSelector: '.portfolio-item',
+            layoutMode: 'fitRows',
+            percentPosition: true,
+            transitionDuration: '0.6s',
+            fitRows: {
+                gutter: 16
+            }
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                const filterValue = filter === 'all' ? '*' : '[data-category="' + filter + '"]';
+
+                iso.arrange({ filter: filterValue });
+            });
+        });
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        let currentImageIndex = 0;
+        let visibleImages = [];
+
+        function updateVisibleImages() {
+            // Isotope cache les elements filtres avec display:none
+            visibleImages = Array.from(portfolioItems).filter(item => item.style.display !== 'none');
+        }
+
+        portfolioItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                updateVisibleImages();
+                currentImageIndex = visibleImages.indexOf(item);
+                openLightbox(item);
+            });
+        });
+
+        function openLightbox(item) {
+            const img = item.querySelector('img');
+            const titleAttr = currentLang === 'fr' ? 'data-title-fr' : 'data-title-en';
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = item.getAttribute(titleAttr);
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('lightboxPrev').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex - 1 + visibleImages.length) % visibleImages.length;
+            openLightbox(visibleImages[currentImageIndex]);
+        });
+
+        document.getElementById('lightboxNext').addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
+            openLightbox(visibleImages[currentImageIndex]);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
+            if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+    </script>
 </body>
-
 </html>
