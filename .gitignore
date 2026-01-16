@@ -1,0 +1,10 @@
+# Visual Studio
+.vs/
+
+# Tout ignorer sauf les fichiers essentiels
+*
+!.gitignore
+!README.md
+!index.html
+!assets/
+!assets/**
